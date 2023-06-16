@@ -1,11 +1,8 @@
 #!/usr/bin/node
-const args = process.argv;
-const fs = require('fs');
-const fileA = fs.readFileSync(args[0]);
-const fileB = fs.readFileSync(args[1]);
-const fileC = `${fileA}${fileB}`;
-fs.writeFileSync(args[4], fileC, (err) => {
-  if (err) {
-    console.log(err);
-  }
-});
+// script that concats 2 files
+
+const args = process.argv.slice(2);
+const file = require('fs');
+const contentA = file.readFileSync('./' + args[0]);
+const contentB = file.readFileSync('./' + args[1]);
+file.writeFileSync('./' + args[2], contentA + contentB);
